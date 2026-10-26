@@ -1,0 +1,18 @@
+services:
+  batcher:
+    build: { context: ../batcher, dockerfile: Dockerfile }
+    container_name: thesis-batcher-sut
+    network_mode: host
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: ${KAFKA_BOOTSTRAP_SERVERS:?set client bootstrap}
+      INPUT_TOPIC: frames
+      OUTPUT_TOPIC: results
+      KAFKA_GROUP_ID: ${KAFKA_GROUP_ID:?set a unique group id}
+      RUN_ID: ${RUN_ID:?set run ID}
+      BATCH_SIZE: ${BATCH_SIZE:?set batch size}
+      MAX_WAIT_MS: ${MAX_WAIT_MS:?set max wait}
+      FUNCTION_TIMEOUT_SECONDS: ${FUNCTION_TIMEOUT_SECONDS:-120}
+      OPENFAAS_FUNCTION_URL: ${OPENFAAS_FUNCTION_URL:?set function URL}
+      OPENFAAS_USERNAME: ${OPENFAAS_USERNAME:-}
+      OPENFAAS_PASSWORD: ${OPENFAAS_PASSWORD:-}
+      HEALTH_ADDR: ${HEALTH_ADDR:-:8090}

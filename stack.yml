@@ -1,0 +1,16 @@
+version: 1.0
+provider:
+  name: openfaas
+  gateway: http://127.0.0.1:8080
+
+functions:
+  frame-batch-processor:
+    lang: dockerfile
+    handler: ./function
+    image: ghcr.io/danielgottschling99/thesis-frame-batch-fn:latest
+    environment:
+      write_debug: "true"
+      exec_timeout: "600s"
+      read_timeout: "601s"
+      write_timeout: "601s"
+      SEGMENTATION_REFINEMENT_PASSES: "0"

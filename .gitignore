@@ -1,0 +1,45 @@
+# OS and editor files
+.DS_Store
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+credentials.json
+docker-login.json
+
+# Go build output and local caches
+bin/
+*.test
+*.out
+batcher/batcher
+consumer/consumer
+producer/producer
+function/function
+
+# Generated benchmark output
+producer/e2e-source-metrics.jsonl
+consumer/e2e-sink-metrics.jsonl
+*.log
+
+# Optional large local media; the benchmark replays frames/ instead
+video.mp4.webm
+
+# Local Docker/Compose overrides
+docker-compose.override.yml
+compose.override.yml
+
+# Temporary deployment and diagnostic files
+.tmp/
+tmp/
+*.pid
+batchedfaas-functions.json
+
